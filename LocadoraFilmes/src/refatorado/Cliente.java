@@ -25,30 +25,29 @@ public class Cliente {
       double valorCorrente = 0.0;
       Aluguel cada = (Aluguel)alugueis.next();
       // determina valores para cada linha
-      switch(cada.getFita().getCódigoDePreço()) {
-      case Fita.NORMAL:
-        valorCorrente += 2;
-        if(cada.getDiasAlugada() > 2) {
-          valorCorrente += (cada.getDiasAlugada() - 2) * 1.5;
-        }
-        break;
-      case Fita.LANÇAMENTO:
-        valorCorrente += cada.getDiasAlugada() * 3;
-        break;
-      case Fita.INFANTIL:
-        valorCorrente += 1.5;
-        if(cada.getDiasAlugada() > 3) {
-          valorCorrente += (cada.getDiasAlugada() - 3) * 1.5;
-        }
-        break;
-      } //switch
+      if(cada.getFita().getClass().equals(FitaNormal.class)){
+    	  valorCorrente += 2;
+          if(cada.getDiasAlugada() > 2) {
+            valorCorrente += (cada.getDiasAlugada() - 2) * 1.5;
+          }
+      }else
+    	  if(cada.getFita().getClass().equals(FitaLancamento.class)){
+    		  valorCorrente += cada.getDiasAlugada() * 3;
+    		// adiciona bonus para aluguel de um lançamento por pelo menos 2 dias
+    		  if(cada.getDiasAlugada() > 1)
+    			  pontosDeAlugadorFrequente++;
+    		  
+      }else{
+    	  valorCorrente += 1.5;
+          if(cada.getDiasAlugada() > 3) {
+            valorCorrente += (cada.getDiasAlugada() - 3) * 1.5;
+          }
+      }
+    	  
+  
       // trata de pontos de alugador frequente
       pontosDeAlugadorFrequente++;
-      // adiciona bonus para aluguel de um lançamento por pelo menos 2 dias
-      if(cada.getFita().getCódigoDePreço() == Fita.LANÇAMENTO &&
-         cada.getDiasAlugada() > 1) {
-         pontosDeAlugadorFrequente++;
-      }
+      
 
       // mostra valores para este aluguel
       resultado += "\t" + cada.getFita().getTítulo() + "\t" + valorCorrente + fimDeLinha;
