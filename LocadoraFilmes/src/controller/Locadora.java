@@ -32,11 +32,11 @@ public class Locadora {
 		}
 		
 		String str = "";
-		str += "--- LISTA DOS ALUGUEIS REGISTRADOS ---\n\n";
+		str += "\n\n--- LISTA DOS ALUGUEIS REGISTRADOS ---\n\n";
 		for(Aluguel a : alugueis){
 			int idx = alugueis.indexOf(a) + 1;
 			str += "ALUGUEL " + idx + "\n";
-			str += "Cliente: " + a.getCliente() + "\n";
+			str += "Cliente: " + a.getCliente().getNome() + "\n";
 			str += "Fitas: " + a.getItensAluguel().size() + "\n";
 			str += "---------\n";
 		}

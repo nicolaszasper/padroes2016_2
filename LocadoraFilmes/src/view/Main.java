@@ -34,5 +34,7 @@ public class Main {
 	    locadora.addAluguel(a1);
 
 	    System.out.println(a1.extrato());
+	    
+	    System.out.println(locadora.listarAlugueis());
 	  }
 }
