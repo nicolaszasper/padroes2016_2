@@ -1,4 +1,4 @@
-package refatorado;
+package model;
 
 public class FitaInfantil implements Fita {
 	private String titulo;

@@ -1,4 +1,4 @@
-package refatorado;
+package model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +8,9 @@ public class Aluguel {
 	private Cliente cliente;
 	private ArrayList<ItemAluguel> itens;
 	
-	public Aluguel(){}
+	public Aluguel(){
+		itens = new ArrayList<ItemAluguel>();
+	}
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -22,8 +24,8 @@ public class Aluguel {
 		return itens;
 	}
 	
-	public void addItemAluguel(ItemAluguel item){
-		itens.add(item);
+	public void addItemAluguel(Fita f, int dias){
+		itens.add(new ItemAluguel(dias, f));
 	}
 	
 	public void removeFita(Fita fita){

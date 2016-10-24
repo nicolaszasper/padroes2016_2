@@ -1,4 +1,4 @@
-package refatorado;
+package model;
 
 public class ItemAluguel {
 	private int diasAlugado;
@@ -6,6 +6,11 @@ public class ItemAluguel {
 	
 	public ItemAluguel(){
 		
+	}
+
+	public ItemAluguel(int diasAlugado, Fita fita) {
+		this.diasAlugado = diasAlugado;
+		this.fita = fita;
 	}
 
 	public int getDiasAlugado() {
