@@ -34,7 +34,7 @@ public class ItemAluguel {
 	}
 	
 	public double getPontosAlugadorFrequenteItem(){
-		return fita.getValor(diasAlugado);
+		return fita.getPontosAlugadorFrequente();
 	}
 	
 }
