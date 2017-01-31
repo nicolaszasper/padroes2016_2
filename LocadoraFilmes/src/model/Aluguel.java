@@ -42,30 +42,14 @@ public class Aluguel {
 	      double valorCorrente = 0.0;
 	      ItemAluguel cada = (ItemAluguel) itensAluguelI.next();
 	      // determina valores para cada linha
-	      if(cada.getFita().getClass().equals(FitaNormal.class)){
-	    	  valorCorrente += 2;
-	          if(cada.getDiasAlugado() > 2) {
-	            valorCorrente += (cada.getDiasAlugado() - 2) * 1.5;
-	          }
-	      }else
-	    	  if(cada.getFita().getClass().equals(FitaLancamento.class)){
-	    		  valorCorrente += cada.getDiasAlugado() * 3;
-	    		// adiciona bonus para aluguel de um lançamento por pelo menos 2 dias
-	    		  if(cada.getDiasAlugado() > 1)
-	    			  pontosDeAlugadorFrequente++;
-	    		  
-	      }else{
-	    	  valorCorrente += 1.5;
-	          if(cada.getDiasAlugado() > 3) {
-	            valorCorrente += (cada.getDiasAlugado() - 3) * 1.5;
-	          }
-	      }
-	    	  
+	      valorCorrente += cada.getValorItem();
+	      
+	      // adiciona pontos extras, caso o tipo de fita ofereça
+	      pontosDeAlugadorFrequente += cada.getPontosAlugadorFrequenteItem();
 	  
 	      // trata de pontos de alugador frequente
 	      pontosDeAlugadorFrequente++;
 	      
-
 	      // mostra valores para este aluguel
 	      resultado += "\t" + cada.getFita().getTítulo() + "\t" + valorCorrente + fimDeLinha;
 	      valorTotal += valorCorrente;

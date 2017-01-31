@@ -29,5 +29,12 @@ public class ItemAluguel {
 		this.fita = fita;
 	}
 	
+	public double getValorItem(){
+		return fita.getValor(diasAlugado);
+	}
+	
+	public double getPontosAlugadorFrequenteItem(){
+		return fita.getValor(diasAlugado);
+	}
 	
 }
